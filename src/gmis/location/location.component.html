@@ -1,0 +1,147 @@
+<div style="text-align: center;
+margin-top: 0em;">
+  <h2>{{this.projectName}} -> Location</h2>
+</div>
+
+<div class="row clearfix" [@routerTransition]>
+  <div class="card main-content" style="margin-left: 1em;">
+    <div class="header">
+      <button class="btn btn-primary btn-lg" type="button" (click)="AddLocation()" >Add Address</button>
+    </div>
+    <div class="body table-responsive">
+      <table class="table table-hover table-striped" [busy]="isTableLoading">
+        <thead>
+          <tr>
+            <!-- <th>S.N</th> -->
+            <th>Provience</th>
+            <th>District</th>
+            <th>Local Body</th>
+            <th>Local Body Type</th>
+            <th>Ward</th>
+            <th>{{ "Actions" | localize }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let project of Address; let i=index">
+            <!-- <td>{{ (currentPage - 1) * itemsPerPage + i +1 }}</td>  -->
+            <td>{{ project.projectName }}</td>
+
+            <td> <button mat-menu-item (click)="viewProject(project)">
+                <mat-icon>edit</mat-icon>
+                <span>View</span>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <hr>
+
+    <div class="body">
+      <div id="row">
+        <form class="form-horizontal" #updateProjectInfoForm="ngForm" (ngSubmit)="save(projectInformation)">
+          <div class="form-group">
+            <div class="col-md-2">
+              <label class=" control-label" for="cmd">Ecological Region:</label>
+            </div>
+            <div class="col-md-2">
+              <select [required]="programInformationId!=0" name="programInformationId" id="programInformationId"
+                [(ngModel)]="programInformationId">
+                <option value=0>Please Select Option</option>
+                <option value=1>Mountain</option>
+                <option value=2>Hill</option>
+                <option value=3>Terai</option>
+              </select>
+            </div>
+            <div class="col-md-2" style="margin-left: 2px">
+              <label class=" control-label" for="cmd">Nearest Road Ahead:</label>
+            </div>
+            <div class="col-md-2">
+              <textarea name="" id="" cols="30" rows="3"></textarea>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-md-2">
+              <label class=" control-label" for="cmd">Distance:</label>
+            </div>
+            <div class="col-md-2">
+              <input type="number">Km
+            </div>
+            <div class="col-md-2" style="padding-left: 40px;" >
+              <label class=" control-label" for="cmd">Nearest Airport:</label>
+            </div>
+            <div class="col-md-2">
+              <textarea name="" id="" cols="30" rows="3"></textarea>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-md-2">
+              <label class=" control-label" for="cmd">Distance:</label>
+            </div>
+            <div class="col-md-2">
+              <input type="number">Km
+            </div>
+            <div class="col-md-2" style="padding-left: 40px;" >
+              <label class=" control-label" for="cmd">Nearest Market:</label>
+            </div>
+            <div class="col-md-2">
+              <textarea name="" id="" cols="30" rows="3"></textarea>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-md-2">
+              <label class=" control-label" for="cmd">Distance:</label>
+            </div>
+            <div class="col-md-2">
+              <input type="number">Km
+            </div>
+            <div class="col-md-2" style="padding-left: 40px;">
+              <label class=" control-label" for="cmd">Major River Basin:</label>
+            </div>
+            <div class="col-md-2" >
+              <select [required]="programInformationId!=0" name="programInformationId" id="programInformationId"
+                [(ngModel)]="programInformationId">
+                <option value=0>Please Select Option</option>
+                <option value=1>Mountain</option>
+                <option value=2>Hill</option>
+                <option value=3>Terai</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-md-2">
+              <label class=" control-label" for="cmd">River Source:</label>
+            </div>
+            <div class="col-md-2">
+              <textarea name="" id="" cols="30" rows="2"></textarea>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-md-2">
+              <label class=" control-label" for="cmd">Local River Basin:</label>
+            </div>
+            <div class="col-md-2">
+              <textarea name="" id="" cols="30" rows="2"></textarea>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-md-2">
+              <button class="btn btn-primary btn-lg">Save</button>
+            </div>
+
+
+
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>

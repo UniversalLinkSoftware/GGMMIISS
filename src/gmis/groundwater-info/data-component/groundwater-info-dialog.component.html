@@ -1,0 +1,573 @@
+<form autocomplete="off" #createRoleForm="ngForm" (ngSubmit)="save()">
+    <h1 mat-dialog-title>Ground Water Information Form</h1>
+
+    <div mat-dialog-content>
+        <div class="row-fluid">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-2">
+                        <label>Tubewell No:</label>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="number" class="form-control" name="tubewellNo"
+                            [(ngModel)]="dto_GroundWaterInformation.tubewellNo" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>Tubewell Information</h3>
+                    </div>
+                </div>
+
+                <div style="border: 2px solid; padding: 6px;">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <label>Location:</label>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" name="location"
+                                [(ngModel)]="dto_GroundWaterInformation.location" required>
+                        </div>
+                        <div class="col-md-1">
+                            <span></span>
+                        </div>
+                        <div class="col-md-1">
+                            <label>Latitude:</label>
+                        </div>
+                        <div class="col-md-2">
+                            <input [(ngModel)]="dto_GroundWaterInformation.laltitude" name="laltitude" type="number"
+                                class="form-control" required>
+                        </div>
+                        <div class="col-md-1">
+                            <span>decimal degree</span>
+                        </div>
+                        <div class="col-md-1">
+                            <label>Longitude:</label>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="number" class="form-control" required
+                                [(ngModel)]="dto_GroundWaterInformation.longitude" name="longitude">
+                        </div>
+                        <div class="col-md-1">
+                            <span>decimal degree</span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <label>Elevation:</label>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="number" class="form-control" required
+                                [(ngModel)]="dto_GroundWaterInformation.elevation" name="elevation">
+                        </div>
+                        <div class="col-md-1">
+                            <span>Masl</span>
+                        </div>
+                        <div class="col-md-1">
+                            <label>Type of Tubewell:</label>
+                        </div>
+                        <div class="col-md-2">
+                            <select [(ngModel)]="dto_GroundWaterInformation.tubewellType" name="tubewellType"
+                                class="form-control">
+                                <option value="Deep Tubewell">Deep Tubewell</option>
+                                <option value="Power Drill Shallow Tubewell">Power Drill Shallow Tubewell</option>
+                                <option value="Shallow Tubewell">Shallow Tubewell</option>
+                                <option value="Dug well">Dug well</option>
+                            </select>
+                        </div>
+                        <div class="col-md-1">
+                            <span></span>
+                        </div>
+                        <div class="col-md-1">
+                            <label>Tubewell Housing Pipe Size:</label>
+                        </div>
+                        <div class="col-md-2">
+                            <input [(ngModel)]="dto_GroundWaterInformation.tubewellHousingPipeSize" type="number"
+                                class="form-control" required name="tubewellHousingPipeSize">
+                        </div>
+                        <div class="col-md-1">
+                            <span>mm</span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <label>Tubewell Screen & Casing Pipe Size:</label>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="number" class="form-control" required
+                                [(ngModel)]="dto_GroundWaterInformation.tubewellScreenAndCastingPipeSize"
+                                name="tubewellScreenAndCastingPipeSize">
+                        </div>
+                        <div class="col-md-1">
+                            <span>mm</span>
+                        </div>
+                        <div class="col-md-1">
+                            <label>Static water level:</label>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="number" class="form-control" required name="staticWaterLevel"
+                                [(ngModel)]="dto_GroundWaterInformation.staticWaterLevel">
+                        </div>
+                        <div class="col-md-1">
+                            <span>m</span>
+                        </div>
+                        <div class="col-md-1">
+                            <label>Aquifer Material:</label>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" required name="aquiferMaterail"
+                                [(ngModel)]="dto_GroundWaterInformation.aquiferMaterail">
+                        </div>
+                        <div class="col-md-1">
+                            <span></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <label>Total drill depth:</label>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="number" class="form-control" required name="totalDrillDepth"
+                                [(ngModel)]="dto_GroundWaterInformation.totalDrillDepth">
+                        </div>
+                        <div class="col-md-1">
+                            <span>m</span>
+                        </div>
+                        <div class="col-md-1">
+                            <label>Housing length:</label>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="number" class="form-control" required name="housingLength"
+                                [(ngModel)]="dto_GroundWaterInformation.housingLength">
+                        </div>
+                        <div class="col-md-1">
+                            <span>m</span>
+                        </div>
+                        <div class="col-md-1">
+                            <label>Screen Length:</label>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="number" class="form-control" required name="screenLength"
+                                [(ngModel)]="dto_GroundWaterInformation.screenLength">
+                        </div>
+                        <div class="col-md-1">
+                            <span>m</span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <label>Type of Screen:</label>
+                        </div>
+                        <div class="col-md-2">
+                            <select [(ngModel)]="dto_GroundWaterInformation.typeOfScreen" name="typeOfScreen"
+                                class="form-control" required>
+                                <option value="Jonnon and Jonson">Jonnon and Jonson</option>
+                                <option value="L.C.G Jonson">L.C.G Jonson</option>
+                                <option value="Slotted">Slotted</option>
+                                <option value="Perforated">Perforated</option>
+                                <option value="Others">Others</option>
+                            </select>
+                        </div>
+                        <div class="col-md-1">
+                            <span></span>
+                        </div>
+                        <div class="col-md-1">
+                            <label>Pumping Discharge:</label>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="number" class="form-control" required name="pumpingDischarge"
+                                [(ngModel)]="dto_GroundWaterInformation.pumpingDischarge">
+                        </div>
+                        <div class="col-md-1">
+                            <span>lps</span>
+                        </div>
+                        <div class="col-md-1">
+                            <label>Drawdown:</label>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="number" class="form-control" required name="drawdown"
+                                [(ngModel)]="dto_GroundWaterInformation.drawdown">
+                        </div>
+                        <div class="col-md-1">
+                            <span>m</span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <label>Aquifer Storage coefficient:</label>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" required name="aquiferStorageCoefficient"
+                                [(ngModel)]="dto_GroundWaterInformation.aquiferStorageCoefficient">
+                        </div>
+                        <div class="col-md-1">
+                            <span></span>
+                        </div>
+                        <div class="col-md-1">
+                            <label>Aquifer Transmissivity:</label>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="number" class="form-control" required name="aquifertransmissivity"
+                                [(ngModel)]="dto_GroundWaterInformation.aquifertransmissivity">
+                        </div>
+                        <div class="col-md-1">
+                            <span>m/day</span>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>Distribution System</h3>
+                    </div>
+                </div>
+
+                <div style="border: 2px solid; padding: 6px;">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <label>Type of Distribution System:</label>
+                        </div>
+                        <div class="col-md-2">
+                            <select name="typeOfDistributionSystem" required class="form-control"
+                                [(ngModel)]="dto_GroundWaterInformation.typeOfDistributionSystem">
+                                <option value="Open Channel">Open Channel</option>
+                                <option value="Buried Pipe">Buried Pipe</option>
+                            </select>
+                        </div>
+                        <div class="col-md-1">
+                            <span></span>
+                        </div>
+                        <div class="col-md-1">
+                            <label>No of Outlets:</label>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="number" class="form-control" required name="noOfOutlets" [(ngModel)]="dto_GroundWaterInformation.noOfOutlets">
+                        </div>
+                        <div class="col-md-1">
+                            <span></span>
+                        </div>
+
+                    </div>
+
+                    <div *ngIf="dto_GroundWaterInformation.typeOfDistributionSystem == 'Open Channel'">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <label>Length of Open Channel</label>
+                            </div>
+                            <div class="col-md-2">
+                                <input type="number" class="form-control" required name="lengthOfOpenChannel" [(ngModel)]="dto_GroundWaterInformation.lengthOfOpenChannel">
+                            </div>
+                            <div class="col-md-1">
+                                <span>m</span>
+                            </div>
+                            <div class="col-md-1">
+                                <label>Size of alpha valve:</label>
+                            </div>
+                            <div class="col-md-2">
+                                <input type="number" name="sizeOfAlphaValve" [(ngModel)]="dto_GroundWaterInformation.sizeOfAlphaValve" required>
+                            </div>
+                            <div class="col-md-1">
+                                <span></span>
+                            </div>
+                            <div class="col-md-1">
+                                <label>Pipe Materail:</label>
+                            </div>
+                            <div class="col-md-2">
+                                <select name="pipeMaterial" [(ngModel)]="dto_GroundWaterInformation.pipeMaterial" class="form-group" required>
+                                    <option value="UPVC">UPVC</option>
+                                    <option value="HDPC">HDPC</option>
+                                    <option value="PVC">PVC</option>
+                                </select>
+                            </div>
+                            <div class="col-md-1">
+                                <span></span>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-1">
+                                <label>Length of Pipe</label>
+                            </div>
+                            <div class="col-md-2">
+                                <input type="number" class="form-control" required name="lengthOfPipe"
+                                    [(ngModel)]="dto_GroundWaterInformation.lengthOfPipe">
+                            </div>
+                            <div class="col-md-1">
+                                <span>m</span>
+                            </div>
+
+                            <div class="col-md-1">
+                                <label>No of surge Raiser</label>
+                            </div>
+                            <div class="col-md-2">
+                                <input type="number" class="form-control" required name="noOfSurgeRaiser"
+                                    [(ngModel)]="dto_GroundWaterInformation.noOfSurgeRaiser">
+                            </div>
+                            <div class="col-md-1">
+                                <span>m</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>Pump Information</h3>
+                    </div>
+                </div>
+
+                <div style="border: 2px solid; padding: 6px;">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <label>Brand of Pump:</label>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" required name="brandOfPump"
+                                [(ngModel)]="dto_GroundWaterInformation.brandOfPump">
+                        </div>
+                        <div class="col-md-1">
+                            <span></span>
+                        </div>
+                        <div class="col-md-1">
+                            <label>Power:</label>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="number" class="form-control" required
+                                [(ngModel)]="dto_GroundWaterInformation.power" name="power">
+                        </div>
+                        <div class="col-md-1">
+                            <span>HP</span>
+                        </div>
+                        <div class="col-md-1">
+                            <label>Head:</label>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="number" class="form-control" required name="head"
+                                [(ngModel)]="dto_GroundWaterInformation.head">
+                        </div>
+                        <div class="col-md-1">
+                            <span>m</span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <label>Pump Discharge:</label>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="number" class="form-control" required name="pumpDischarge"
+                                [(ngModel)]="dto_GroundWaterInformation.pumpDischarge">
+                        </div>
+                        <div class="col-md-1">
+                            <span>lps</span>
+                        </div>
+                        <div class="col-md-1">
+                            <label>Efficiency of Motor:</label>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="number" class="form-control" required
+                                name="dto_GroundWaterInformation.efficienyOfMoter" min="0" max="100"
+                                [(ngModel)]="dto_GroundWaterInformation.efficienyOfMoter">
+                        </div>
+                        <div class="col-md-1">
+                            <span>%</span>
+                        </div>
+                        <div class="col-md-1">
+                            <label>Efficiency of Pump:</label>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="number" class="form-control" required name="efficienyOfPump"
+                                [(ngModel)]="dto_GroundWaterInformation.efficienyOfPump" min="0" max="100">
+                        </div>
+                        <div class="col-md-1">
+                            <span>%</span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <label>Pump lowering depth:</label>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="number" class="form-control" required name="pumpLoweringDepth"
+                                [(ngModel)]="dto_GroundWaterInformation.pumpLoweringDepth">
+                        </div>
+                        <div class="col-md-1">
+                            <span>m</span>
+                        </div>
+                        <div class="col-md-1">
+                            <label>Column pipe size:</label>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="number" class="form-control" required name="columnPipeSize" min="0" max="100"
+                                [(ngModel)]="dto_GroundWaterInformation.columnPipeSize">
+                        </div>
+                        <div class="col-md-1">
+                            <span>mm</span>
+                        </div>
+                        <div class="col-md-1">
+                            <label>Column type:</label>
+                        </div>
+                        <div class="col-md-2">
+                            <select [(ngModel)]="dto_GroundWaterInformation.columnType" name="columnType"
+                                class="form-control" required>
+                                <option value="MS">MS</option>
+                                <option value="GI">GI</option>
+                            </select>
+                        </div>
+                        <div class="col-md-1">
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>Pump House Information</h3>
+                    </div>
+                </div>
+
+                <div style="border: 2px solid; padding: 6px;">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <label>Size of pump house (L*B*H):</label>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" required name="sizeOfPumpHouse"
+                                [(ngModel)]="dto_GroundWaterInformation.sizeOfPumpHouse">
+                        </div>
+                        <div class="col-md-1">
+                            <span>m*m*m</span>
+                        </div>
+                        <div class="col-md-1">
+                            <label>Height of Overhead tank:</label>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="number" class="form-control" required
+                                [(ngModel)]="dto_GroundWaterInformation.heightOfOverheadTank"
+                                name="heightOfOverheadTank">
+                        </div>
+                        <div class="col-md-1">
+                            <span>m</span>
+                        </div>
+                        <div class="col-md-1">
+                            <label>Volumne of overhead tank:</label>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="number" class="form-control" required name="volumeOverheadTank"
+                                [(ngModel)]="dto_GroundWaterInformation.volumeOverheadTank">
+                        </div>
+                        <div class="col-md-1">
+                            <span>cu.m</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>Electrification</h3>
+                    </div>
+                </div>
+
+                <div style="border: 2px solid; padding: 6px;">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <label>Length of 11kv HT Tranmission line</label>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="number" class="form-control" required name="lengthOf11KvHtTransLine"
+                                [(ngModel)]="dto_GroundWaterInformation.lengthOf11KvHtTransLine">
+                        </div>
+                        <div class="col-md-1">
+                            <span>m</span>
+                        </div>
+                        <div class="col-md-1">
+                            <label>440V Lt tranmission line:</label>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="number" class="form-control" required name="lengthof440VLtTransLine"
+                                [(ngModel)]="dto_GroundWaterInformation.lengthof440VLtTransLine">
+                        </div>
+                        <div class="col-md-1">
+                            <span>m</span>
+                        </div>
+                        <div class="col-md-1">
+                            <label>Number of poles:</label>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="number" class="form-control" required name="numberOfPoles"
+                                [(ngModel)]="dto_GroundWaterInformation.numberOfPoles">
+                        </div>
+                        <div class="col-md-1">
+                            <span></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <label>Transformer capacity</label>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="number" class="form-control" required name="transformerCapacity"
+                                [(ngModel)]="dto_GroundWaterInformation.transformerCapacity">
+                        </div>
+                        <div class="col-md-1">
+                            <span>KVA</span>
+                        </div>
+                        <div class="col-md-1">
+                            <label>Control Panel</label>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="number" class="form-control" required name="controlPanel"
+                                [(ngModel)]="dto_GroundWaterInformation.controlPanel">
+                        </div>
+                        <div class="col-md-1">
+                            <span>HP</span>
+                        </div>
+                        <div class="col-md-1">
+                            <label>Voltage stabilizer:</label>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="number" class="form-control" required name="voltageStabilizer"
+                                [(ngModel)]="dto_GroundWaterInformation.voltageStabilizer">
+                        </div>
+                        <div class="col-md-1">
+                            <span>KVA</span>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+    <div mat-dialog-actions align="end">
+        <button mat-button type="button" [disabled]="saving" (click)="close(false)">
+            {{ "Cancel" | localize }}
+        </button>
+        <div *ngIf="dto_GroundWaterInformation.id > 0 ; else SaveNewData">
+            <button mat-flat-button type="submit" flex="15" color="primary"
+                [disabled]="!createRoleForm.form.valid || saving">
+                Update
+            </button>
+        </div>
+        <ng-template #SaveNewData>
+            <button mat-flat-button type="submit" flex="15" color="primary"
+                [disabled]="!createRoleForm.form.valid || saving">
+                {{ "Save" | localize }}
+            </button>
+        </ng-template>
+
+    </div>
+</form>

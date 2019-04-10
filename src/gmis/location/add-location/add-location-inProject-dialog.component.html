@@ -1,0 +1,67 @@
+<form autocomplete="off" #createRoleForm="ngForm" (ngSubmit)="save()">
+  <h1 mat-dialog-title>Add Address</h1>
+  <mat-dialog-content style="height:300px;">
+
+    <div class="row">
+      <div class="col-md-3">
+        <label>Provience</label>
+      </div>
+      <div class="col-md-3">
+        <label>Local Body Type</label>
+      </div>
+      <div class="col-md-3">
+        <label>District</label>
+      </div>
+      <div class="col-md-3">
+        <label>Local Body Name</label>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+         <select>
+           <option>
+              Please Select Provience
+           </option>
+         </select>
+        </div>
+        <div class="col-md-3">
+            <select>
+                <option>
+                   Please Select Provience
+                </option>
+              </select>
+        </div>
+        <div class="col-md-3">
+            <select>
+                <option>
+                   Please Select Provience
+                </option>
+              </select>
+        </div>
+        <div class="col-md-3">
+            <select>
+                <option>
+                   Please Select Provience
+                </option>
+              </select>
+        </div>
+      </div>
+
+  </mat-dialog-content>
+
+
+  <div mat-dialog-actions align="end">
+    <!-- <button mat-button type="button" [disabled]="saving" (click)="close(false)">
+            {{ "Cancel" | localize }}
+          </button>
+          <button
+            mat-flat-button
+            type="submit"
+            flex="15"
+            color="primary"
+            [disabled]="!createRoleForm.form.valid || saving"
+          >
+            {{ "Save" | localize }}
+          </button> -->
+  </div>
+</form>

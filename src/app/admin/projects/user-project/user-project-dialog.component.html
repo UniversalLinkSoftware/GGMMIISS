@@ -1,0 +1,26 @@
+<form autocomplete="off" #createRoleForm="ngForm" (ngSubmit)="save()">
+  <h1 mat-dialog-title>Add User To Project</h1>
+  <h2>{{projectName}}</h2>
+
+  <div style="width:600px;">
+    <div class="row-fluid">
+      <div class="col-md-12">
+        <h1>Users List</h1> <br>
+        <div class="row" >
+          <select name="selectedUserId" [(ngModel)]="selectedUserId" class="form-control">
+              <option value="0">Please Select User</option>
+              <option *ngFor="let user of userss; let i=index" value="{{user.id}}">{{user.emailAddress}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-actions align="end">
+    <button mat-button type="button" [disabled]="saving" (click)="close(false)">
+      {{ "Cancel" | localize }}
+    </button>
+    <button mat-flat-button type="submit" flex="15" color="primary" [disabled]="!createRoleForm.form.valid || saving">
+      {{ "Save" | localize }}
+    </button>
+  </div>
+</form>

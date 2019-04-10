@@ -1,0 +1,163 @@
+<div style="text-align: center;
+margin-top: 0em;">
+  <h2>{{this.projectName}} -> Economic Information</h2>
+</div>
+
+<div class="row clearfix" [@routerTransition]>
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="card">
+      <div class="body" style="margin-left: 1em;">
+
+        <div>
+          <form class="form-horizontal" #TrainingForm="ngForm" (ngSubmit)="save()">
+
+            <div style="border: 2px solid #c8c6c6; padding: 1em">
+
+              <div class="form-group">
+                <div class="col-md-2">
+                  <label>Costing Year :</label>
+                </div>
+                <div class="col-md-4">
+                  <select name="CreateEconomicDto.costingYear" [(ngModel)]="CreateEconomicDto.costingYear">
+                    <option value="0"> Please select year</option>
+                    <option *ngFor="let yrs of CostingYear" [value]="yrs">{{yrs}}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-md-2">
+                  <label>Total Project Cost :</label>
+                </div>
+                <div class="col-md-4">
+                  <input type="number" name="CreateEconomicDto.totalProjectCost"  [(ngModel)]="CreateEconomicDto.totalProjectCost" required id="totalProjectCost"> Nrs
+                </div>
+                <div class="col-md-2">
+                  <label>B/C 1 :</label>
+                </div>
+                <div class="col-md-4">
+                  <input type="number" name="CreateEconomicDto.bC1" [(ngModel)]="CreateEconomicDto.bC1"  required id="bC1"> (e.g. 2:3)
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-md-2">
+                  <label>GON Share :</label>
+                </div>
+                <div class="col-md-4">
+                  <input type="number" name="CreateEconomicDto.gonShare" [(ngModel)]="CreateEconomicDto.gonShare" required id="gonShare"> Nrs
+                </div>
+                <div class="col-md-2">
+                  <label>Discount Rate 1 :</label>
+                </div>
+                <div class="col-md-4">
+                  <input type="number" min="0" max="100" name="CreateEconomicDto.discountRate1" [(ngModel)]="CreateEconomicDto.discountRate1" required id="discountRate1"> %
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-md-2">
+                  <label>WUA Share :</label>
+                </div>
+                <div class="col-md-4">
+                  <input type="number" name="CreateEconomicDto.wuaShare" [(ngModel)]="CreateEconomicDto.wuaShare" required id="wuaShare"> Nrs
+                </div>
+                <div class="col-md-2">
+                  <label>B/C 2 :</label>
+                </div>
+                <div class="col-md-4">
+                  <input type="number" name="CreateEconomicDto.bC2" [(ngModel)]="CreateEconomicDto.bC2" required id="bC2">
+                  (e.g. 2:3)
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-md-2">
+                  <label>EIRR :</label>
+                </div>
+                <div class="col-md-4">
+                  <input type="number" min="0" max="100" name="CreateEconomicDto.eirr" [(ngModel)]="CreateEconomicDto.eirr" required id="eirr"> %
+                </div>
+                <div class="col-md-2">
+                  <label>Discount Rate2 :</label>
+                </div>
+                <div class="col-md-4">
+                  <input type="number" min="0" max="100" name="CreateEconomicDto.discountRate2"  [(ngModel)]="CreateEconomicDto.discountRate2" required id="discountRate2"> %
+                </div>
+              </div>
+
+              <div class="form-group" style="margin-left: 1em">
+                <div *ngIf="CreateEconomicDto.id > 0; else showSaveBtn">
+                    <button mat-flat-button type="submit" flex="15" color="primary"
+                    [disabled]="!TrainingForm.form.valid || saving">
+                    <div>
+                      Update
+                    </div>
+                  </button>
+                </div>
+
+                <ng-template #showSaveBtn>
+                    <button mat-flat-button type="submit" flex="15" color="primary"
+                    [disabled]="!TrainingForm.form.valid || saving">
+                    <div>
+                      {{ "Save" | localize }}
+                    </div>
+                  </button>
+                </ng-template>
+              </div>
+            </div>
+
+          </form>
+
+          <hr>
+
+          <div class="body table-responsive" style="border: 2px solid #c8c6c6; padding: 1em">
+            <table class="table table-hover table-striped" [busy]="isTableLoading">
+              <thead>
+                <tr>
+                  <th>Costing Year</th>
+                  <th>Project Cost</th>
+                  <th>GON Share (Nrs)</th>
+                  <th>WUA Share (Nrs)</th>
+                  <th>EIRR (%) </th>
+                  <th>B/C 1</th>
+                  <th>Discount Rate 1 (%)</th>
+                  <th>B/C 2</th>
+                  <th>Discount Rate 2 (%)</th>
+                  <th>Cost / ha</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let lis of EconomicInfoList">
+                  <td>{{ lis.costingYear }}</td>
+                  <td>{{ lis.totalProjectCost }}</td>
+                  <td>{{ lis.gonShare }}</td>
+                  <td>{{ lis.wuaShare }}</td>
+                  <td>{{ lis.eirr }}</td>
+                  <td>{{ lis.bC1 }}</td>
+                  <td>{{ lis.discountRate1 }}</td>
+                  <td>{{ lis.bC2 }}</td>
+                  <td>{{ lis.discountRate2 }}</td>
+                  <td>------</td>
+                  <td> 
+                    <button mat-menu-item (click)="editInfo(lis)">
+                      <mat-icon>edit</mat-icon>
+                      <span>Edit</span>
+                    </button>
+                    <!-- <button mat-menu-item (click)="editInfo(lis)">
+                        <mat-icon>trash</mat-icon>
+                        <span>Delete</span>
+                      </button> -->
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
